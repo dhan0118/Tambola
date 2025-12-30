@@ -3,14 +3,34 @@
   box-sizing: border-box;
   font-family: "Segoe UI", system-ui, sans-serif;
 }
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+#app {
+  background: transparent;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='rgba(255,255,255,0.015)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.15;
+}
 
 body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
-  text-align: center;
   margin: 0;
-  padding: 20px;
+  min-height: 100svh; /* modern mobile-safe */
+  background: linear-gradient(
+    135deg,
+    #0f2027,
+    #203a43,
+    #2c5364
+  );
+  background-attachment: fixed;
 }
+
 
 h1 {
   margin-bottom: 10px;
@@ -165,4 +185,5 @@ td, th {
   0% { transform: scale(0.9); }
   100% { transform: scale(1); }
 }
+
 
