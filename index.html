@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Tambola Live</title>
-    <link rel="stylesheet" href="style.css">
-
-    
+  <title>Tambola Live</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <h1>🎱 Tambola Live</h1>
 
 <div id="setup">
-    <input id="username" placeholder="Username">
-    <input id="roomId" placeholder="Room ID">
-    <button onclick="createRoom()">Create Room</button>
-    <button onclick="joinRoom()">Join Room</button>
+  <input id="hostName" placeholder="Host name">
+  <input id="ticketPrice" type="number" placeholder="Ticket Price (₹)">
+  <button onclick="createRoom()">Create Room</button>
+</div>
+
+<div id="hostPanel" hidden>
+  <h3>Room: <span id="roomLabel"></span></h3>
+
+  <input id="playerName" placeholder="Player name">
+  <button onclick="addPlayer()">Add Player</button>
+
+  <div id="prizeInputs"></div>
+
+  <button onclick="startGame()">Start Game</button>
 </div>
 
 <div id="game" hidden>
-    <h2>Room: <span id="roomLabel"></span></h2>
-    <h3 id="iterationLabel"></h3>
+  <h2 id="iterationLabel"></h2>
 
-    <div id="current">--</div>
+  <div id="current">--</div>
+  <button onclick="drawNumber()">Draw</button>
 
-    <button onclick="drawNumber()">Draw</button>
-    <button onclick="resetGame()">Reset</button>
+  <h3>Declare Winner</h3>
+  <select id="winType"></select>
+  <select id="winnerPlayer"></select>
+  <button onclick="declareWin()">Declare</button>
 
-    <h3>Declare Winning</h3>
-    <select id="winType">
-        <option value="early_five">Early Five</option>
-        <option value="early_top">Early Top Line</option>
-        <option value="early_middle">Early Middle Line</option>
-        <option value="early_bottom">Early Bottom Line</option>
-        <option value="full_house">Full House</option>
-    </select>
-    <button onclick="declareWin()">Declare</button>
+  <h3>Tickets (This Iteration)</h3>
+  <div id="tickets"></div>
 
-    <h3>Number Board</h3>
-    <div id="board"></div>
+  <div id="board"></div>
 
-    <h3>Winners</h3>
-    <div id="winners"></div>
+  <h3>Winners</h3>
+  <div id="winners"></div>
+
+  <h3>Settlement</h3>
+  <div id="settlement"></div>
+
+  <button onclick="resetGame()">Next Iteration</button>
 </div>
 
 <script type="module" src="app.js"></script>
-
 </body>
 </html>
