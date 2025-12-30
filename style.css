@@ -1,84 +1,144 @@
-body {
-  background:#121212;
-  color:#fff;
-  font-family:system-ui;
-  padding:10px;
-  text-align:center;
-}
-
-*, *::before, *::after {
+/* ---------- BASE ---------- */
+* {
   box-sizing: border-box;
+  font-family: "Segoe UI", system-ui, sans-serif;
 }
 
-input, button, select {
-  width: 100%;
-  max-width: 100%;
-  padding: 12px;
-  margin: 6px 0;
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 10px;
+  animation: fadeDown 0.6s ease;
+}
+
+/* ---------- INPUTS & BUTTONS ---------- */
+input, select, button {
+  padding: 10px 12px;
+  margin: 6px;
   border-radius: 8px;
   border: none;
+  outline: none;
+  font-size: 14px;
 }
 
+input, select {
+  background: #ffffff;
+}
 
 button {
-  background:#00ffcc;
-  font-weight:bold;
-  cursor:pointer;
+  background: #ff9800;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-#current {
-  font-size:4rem;
-  color:#00ffcc;
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
 }
 
+button:active {
+  transform: scale(0.97);
+}
+
+/* ---------- PANELS ---------- */
+#joinBox, #setup, #panel, #game {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 15px;
+  margin: 15px auto;
+  max-width: 520px;
+  animation: fadeUp 0.5s ease;
+}
+
+/* ---------- BOARD ---------- */
 #board {
-  display:grid;
-  grid-template-columns:repeat(9,1fr);
-  gap:5px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6px;
+  margin-top: 15px;
 }
 
 #board span {
-  border-radius:50%;
-  padding:10px;
+  padding: 8px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 6px;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.drawn {
-  background:#00ffcc;
-  color:#000;
+#board span.drawn {
+  background: #4caf50;
+  color: #000;
+  transform: scale(1.1);
 }
 
-table {
-  width:100%;
-  border-collapse:collapse;
-  margin-top:10px;
+/* ---------- CURRENT NUMBER ---------- */
+#current {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 10px 0;
+  animation: pulse 0.5s ease;
 }
 
-td, th {
-  border:1px solid #444;
-  padding:6px;
-}
-
-.profit { color:#00ff99; }
-.loss { color:#ff6666; }
-
-@media (max-width: 480px) {
-  #board {
-    grid-template-columns: repeat(5, 1fr);
-  }
-
-  #current {
-    font-size: 3rem;
-  }
-}
-
+/* ---------- COLLAPSIBLE ---------- */
 .collapsible {
   cursor: pointer;
-  background: #1f1f1f;
-  padding: 10px;
-  border-radius: 8px;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.collapsible:hover {
+  opacity: 0.8;
 }
 
 .collapsed {
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
 }
 
+/* ---------- TABLES ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+td, th {
+  padding: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.profit {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.loss {
+  color: #f44336;
+  font-weight: bold;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
