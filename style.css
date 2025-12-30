@@ -1,0 +1,39 @@
+body {
+    background: #1b1b1b;
+    color: #fff;
+    font-family: Arial;
+    text-align: center;
+}
+
+input, button, select {
+    padding: 8px;
+    margin: 5px;
+}
+
+#current {
+    font-size: 80px;
+    margin: 10px;
+    color: #00ffcc;
+}
+
+#board span {
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3px;
+    border-radius: 50%;
+    background: #333;
+}
+
+#board .drawn {
+    background: #00ffcc;
+    color: #000;
+}
+
+#winners {
+    margin-top: 20px;
+    text-align: left;
+    display: inline-block;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tambola Live</title>
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+<body>
+
+<h1>🎱 Tambola Live</h1>
+
+<div id="setup">
+    <input id="username" placeholder="Username">
+    <input id="roomId" placeholder="Room ID">
+    <button onclick="createRoom()">Create Room</button>
+    <button onclick="joinRoom()">Join Room</button>
+</div>
+
+<div id="game" hidden>
+    <h2>Room: <span id="roomLabel"></span></h2>
+    <h3 id="iterationLabel"></h3>
+
+    <div id="current">--</div>
+
+    <button onclick="drawNumber()">Draw</button>
+    <button onclick="resetGame()">Reset</button>
+
+    <h3>Declare Winning</h3>
+    <select id="winType">
+        <option value="early_five">Early Five</option>
+        <option value="early_top">Early Top Line</option>
+        <option value="early_middle">Early Middle Line</option>
+        <option value="early_bottom">Early Bottom Line</option>
+        <option value="full_house">Full House</option>
+    </select>
+    <button onclick="declareWin()">Declare</button>
+
+    <h3>Number Board</h3>
+    <div id="board"></div>
+
+    <h3>Winners</h3>
+    <div id="winners"></div>
+</div>
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
